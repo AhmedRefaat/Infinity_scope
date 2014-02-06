@@ -1,0 +1,65 @@
+<h1>Listing customers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Delivery date</th>
+      <th>Work</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th>Request date</th>
+      <th>Cash</th>
+      <th>Paid</th>
+      <th>Remained</th>
+      <th>Lft sp</th>
+      <th>Lft cl</th>
+      <th>Lft ax</th>
+      <th>Rght sp</th>
+      <th>Rght cl</th>
+      <th>Rght ax</th>
+      <th>Doctor</th>
+      <th>Req store</th>
+      <th>Deliv store</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.phone %></td>
+        <td><%= customer.delivery_date %></td>
+        <td><%= customer.work %></td>
+        <td><%= customer.mobile %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.request_date %></td>
+        <td><%= customer.cash %></td>
+        <td><%= customer.paid %></td>
+        <td><%= customer.remained %></td>
+        <td><%= customer.lft_sp %></td>
+        <td><%= customer.lft_cl %></td>
+        <td><%= customer.lft_ax %></td>
+        <td><%= customer.rght_sp %></td>
+        <td><%= customer.rght_cl %></td>
+        <td><%= customer.rght_ax %></td>
+        <td><%= customer.doctor %></td>
+        <td><%= customer.req_store %></td>
+        <td><%= customer.deliv_store %></td>
+        <td><%= customer.comment %></td>
+        <td><%= link_to 'Show', customer %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

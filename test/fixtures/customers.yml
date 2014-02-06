@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  phone: MyString
+  delivery_date: 2014-02-06 06:46:56
+  work: MyString
+  mobile: 
+  address: MyString
+  request_date: 2014-02-06 06:46:56
+  cash: 9.99
+  paid: 9.99
+  remained: 9.99
+  lft_sp: 9.99
+  lft_cl: 9.99
+  lft_ax: 9.99
+  rght_sp: 9.99
+  rght_cl: 9.99
+  rght_ax: 9.99
+  doctor: MyString
+  req_store: MyString
+  deliv_store: MyString
+  comment: MyText
+
+two:
+  name: MyString
+  phone: MyString
+  delivery_date: 2014-02-06 06:46:56
+  work: MyString
+  mobile: 
+  address: MyString
+  request_date: 2014-02-06 06:46:56
+  cash: 9.99
+  paid: 9.99
+  remained: 9.99
+  lft_sp: 9.99
+  lft_cl: 9.99
+  lft_ax: 9.99
+  rght_sp: 9.99
+  rght_cl: 9.99
+  rght_ax: 9.99
+  doctor: MyString
+  req_store: MyString
+  deliv_store: MyString
+  comment: MyText
