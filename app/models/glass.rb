@@ -1,2 +1,2 @@
-class Glass < ActiveRecord::Base
+    class Glass < ActiveRecord::Base
 end
