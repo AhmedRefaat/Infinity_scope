@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Frame kind:</strong>
+  <%= @glass.frame_kind %>
+</p>
+
+<p>
+  <strong>Made in:</strong>
+  <%= @glass.made_in %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @glass.quantity %>
+</p>
+
+<p>
+  <strong>Unity price:</strong>
+  <%= @glass.unity_price %>
+</p>
+
+<p>
+  <strong>Discount rate:</strong>
+  <%= @glass.discount_rate %>
+</p>
+
+<p>
+  <strong>Glass Kind:</strong>
+  <%= @glass.glass_kind %>
+</p>
+
+<p>
+  <strong>Discount rate 2:</strong>
+  <%= @glass.discount_rate_2 %>
+</p>
+
+<%= link_to 'Edit', edit_glass_path(@glass) %> |
+<%= link_to 'Back', glasses_path %>

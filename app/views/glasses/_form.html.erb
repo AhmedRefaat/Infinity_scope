@@ -1,0 +1,60 @@
+<%= form_for(@glass) do |f| %>
+  <% if @glass.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@glass.errors.count, "error") %> prohibited this glass from being saved:</h2>
+
+      <ul>
+      <% @glass.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :frame_kind %><br>
+    <%if false%>
+    <%= f.text_field :frame_kind %>
+    <%end%>
+    <%= f.select :frame_kind, options_for_select(%w[Full_Frame Half_Frame Frameless Mask])%>
+  </div>
+  <div class="field">
+    <%= f.label :made_in %><br>
+    <%if false%>
+    <%= f.text_field :made_in %>
+    <%end%>select
+    <%= f.select :made_in, options_for_select(%w[Turkey Koera China Italy Japan France German])%>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :unity_price %><br>
+    <%= f.text_field :unity_price %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_rate %><br>
+    <%= f.text_field :discount_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :glass_kind %><br>
+    <%if false%>
+    <%= f.text_field :glass_kind %>
+    <%end%>
+    <%if true%>
+    <%= f.select :glass_kind, options_for_select(%w[white_glasses sun_glasses])%>
+    <%end%>
+  </div>
+  <div class="field">
+    <%= f.label :discount_rate_2 %><br>
+    <%= f.text_field :discount_rate_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br>
+    <%= f.text_field :model %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

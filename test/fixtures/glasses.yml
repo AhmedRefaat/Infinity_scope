@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  frame_kind: MyString
+  made_in: MyString
+  quantity: 1
+  unity_price: 9.99
+  discount_rate: 
+  type: 
+  discount_rate_2: 
+
+two:
+  frame_kind: MyString
+  made_in: MyString
+  quantity: 1
+  unity_price: 9.99
+  discount_rate: 
+  type: 
+  discount_rate_2: 

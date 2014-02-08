@@ -1,0 +1,39 @@
+<h1>Listing glasses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Frame kind</th>
+      <th>Made in</th>
+      <th>Quantity</th>
+      <th>Unity price</th>
+      <th>Discount rate</th>
+      <th>Glass Kind</th>
+      <th>Discount rate 2</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @glasses.each do |glass| %>
+      <tr>
+        <td><%= glass.frame_kind %></td>
+        <td><%= glass.made_in %></td>
+        <td><%= glass.quantity %></td>
+        <td><%= glass.unity_price %></td>
+        <td><%= glass.discount_rate %></td>
+        <td><%= glass.glass_kind %></td>
+        <td><%= glass.discount_rate_2 %></td>
+        <td><%= link_to 'Show', glass %></td>
+        <td><%= link_to 'Edit', edit_glass_path(glass) %></td>
+        <td><%= link_to 'Destroy', glass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Glass', new_glass_path %>
