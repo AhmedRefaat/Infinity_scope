@@ -17,7 +17,7 @@ def glass_to_String
 
      # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:name, :phone, :delivery_date, :work, :mobile, :address, :request_date, :cash, :paid, :remained, :lft_sp, :lft_cl, :lft_ax, :rght_sp, :rght_cl, :rght_ax, :doctor, :req_store, :deliv_store, :comment)
+      params.require(:customer).permit(:name, :phone, :delivery_date, :work, :mobile, :address, :request_date, :cash, :paid, :remained, :lft_sp, :lft_cl, :lft_ax, :rght_sp, :rght_cl, :rght_ax, :doctor, :req_store, :deliv_store, :comment, :delivered)
     end
 
   public

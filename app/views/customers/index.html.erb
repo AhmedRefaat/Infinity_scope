@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Delivery Status</th>
       <th>Phone</th>
       <th>Delivery date</th>
       <th>Work</th>
@@ -13,15 +14,8 @@
       <th>Cash</th>
       <th>Paid</th>
       <th>Remained</th>
-      <th>Lft sp</th>
-      <th>Lft cl</th>
-      <th>Lft ax</th>
-      <th>Rght sp</th>
-      <th>Rght cl</th>
-      <th>Rght ax</th>
       <th>Doctor</th>
       <th>Req store</th>
-      <th>Deliv store</th>
       <th>Comment</th>
       <th></th>
       <th></th>
@@ -33,6 +27,11 @@
     <% @customers.each do |customer| %>
       <tr>
         <td><%= customer.name %></td>
+        <%if customer.delivered%>
+        <td>Yes</td>
+        <%else%>
+        <td>No</td>
+        <%end%>
         <td><%= customer.phone %></td>
         <td><%= customer.delivery_date %></td>
         <td><%= customer.work %></td>
@@ -42,15 +41,8 @@
         <td><%= customer.cash %></td>
         <td><%= customer.paid %></td>
         <td><%= customer.remained %></td>
-        <td><%= customer.lft_sp %></td>
-        <td><%= customer.lft_cl %></td>
-        <td><%= customer.lft_ax %></td>
-        <td><%= customer.rght_sp %></td>
-        <td><%= customer.rght_cl %></td>
-        <td><%= customer.rght_ax %></td>
         <td><%= customer.doctor %></td>
         <td><%= customer.req_store %></td>
-        <td><%= customer.deliv_store %></td>
         <td><%= customer.comment %></td>
         <td><%= link_to 'Show', customer %></td>
         <td><%= link_to 'Edit', edit_customer_path(customer) %></td>

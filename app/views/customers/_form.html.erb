@@ -113,6 +113,12 @@
     <%= f.select :deliv_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => params[:deliv_store], :include_blank=> 'None' %>
     <%end%>
   </div>
+    <div class="field">
+    <%= f.label :delivered %><br>
+    <%= f.check_box :delivered %>
+  </div>
+  <div>
+  
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
