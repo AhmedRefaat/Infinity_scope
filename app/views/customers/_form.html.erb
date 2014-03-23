@@ -51,6 +51,24 @@
     <%= f.label :remained %><br>
     <%= f.text_field :remained %>
   </div>
+  <table>
+  	<thead>
+  		<tr>
+  			<th>Left Eye</th>
+  			<th>Right Eye</th>
+  		
+  		<tr>
+  			<th>Left Sperical</th>
+  			<th>Left Circual</th>
+  			<th>Left Axis</th>
+  			
+  			<th>Right Sperical</th>
+  			<th>Right Circual</th>
+  			<th>Right Axis</th>
+  		</tr>
+  		</tr>
+  	</thead>
+  </table>
   <div class="field">
     <%= f.label :lft_sp %><br>
     <%= f.text_field :lft_sp %>
@@ -81,15 +99,28 @@
   </div>
   <div class="field">
     <%= f.label :req_store %><br>
+    <%if false%>
     <%= f.text_field :req_store %>
+    <%else%>
+    <%= f.select :req_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => params[:req_store], :include_blank=> 'None' %>
+    <%end%>
   </div>
   <div class="field">
     <%= f.label :deliv_store %><br>
+    <%if false%>
     <%= f.text_field :deliv_store %>
+    <%else%>
+    <%= f.select :deliv_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => params[:deliv_store], :include_blank=> 'None' %>
+    <%end%>
   </div>
   <div class="field">
     <%= f.label :comment %><br>
     <%= f.text_area :comment %>
+  </div>
+  <div>
+  
+  	
+	<%= select_tag 'glass_id', options_for_select(@strings), :include_blank=> true%>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -19,15 +19,26 @@
     <%= f.select :frame_kind, options_for_select(%w[Full_Frame Half_Frame Frameless Mask])%>
   </div>
   <div class="field">
+    <%= f.label :frame_material %><br>
+    <%if false%>
+    <%= f.text_field :frame_material %>
+    <%end%>
+    <%= f.select :frame_material, options_for_select(%w[Metal Plastic])%>
+  </div>
+  <div class="field">
     <%= f.label :made_in %><br>
     <%if false%>
     <%= f.text_field :made_in %>
-    <%end%>select
+    <%end%>
     <%= f.select :made_in, options_for_select(%w[Turkey Koera China Italy Japan France German])%>
   </div>
   <div class="field">
     <%= f.label :quantity %><br>
     <%= f.number_field :quantity %>
+  </div>
+    <div class="field">
+    <%= f.label :remain_in_store %><br>
+    <%= f.text_field :remain_in_store %>
   </div>
   <div class="field">
     <%= f.label :unity_price %><br>

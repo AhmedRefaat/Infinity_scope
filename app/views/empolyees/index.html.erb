@@ -1,0 +1,47 @@
+<h1>Listing empolyees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th>National</th>
+      <th>Mobile 2</th>
+      <th>Birthday</th>
+      <th>Age</th>
+      <th>Role</th>
+      <th>Salary</th>
+      <th>Comment</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @empolyees.each do |empolyee| %>
+      <tr>
+        <td><%= empolyee.name %></td>
+        <td><%= empolyee.phone %></td>
+        <td><%= empolyee.mobile %></td>
+        <td><%= empolyee.address %></td>
+        <td><%= empolyee.national_id %></td>
+        <td><%= empolyee.mobile_2 %></td>
+        <td><%= empolyee.birthday %></td>
+        <td><%= empolyee.age %></td>
+        <td><%= empolyee.role %></td>
+        <td><%= empolyee.salary %></td>
+        <td><%= empolyee.comment %></td>
+        <td><%= link_to 'Show', empolyee %></td>
+        <td><%= link_to 'Edit', edit_empolyee_path(empolyee) %></td>
+        <td><%= link_to 'Destroy', empolyee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Empolyee', new_empolyee_path %>

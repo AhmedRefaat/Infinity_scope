@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Glass:</strong>
+  <%= @glass_store_link.glass_id %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @glass_store_link.store_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @glass_store_link.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_glass_store_link_path(@glass_store_link) %> |
+<%= link_to 'Back', glass_store_links_path %>

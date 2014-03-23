@@ -1,0 +1,116 @@
+<h1>New glass_store_link</h1>
+<%= form_for(@glass_store_link) do |f| %>
+  <% if @glass_store_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@glass_store_link.errors.count, "error") %> prohibited continuing this action from being saved:</h2>
+
+      <ul>
+      <% @glass_store_link.errors.messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <% if flash[:errors] %>
+    <div id="error_explanation">
+      <h2><%= pluralize(flash[:errors].count, "error") %> prohibited continuing this action from being saved:</h2>
+
+      <ul>
+      <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field">
+    <%= f.hidden_field:glass_id %><br>
+    <%= f.hidden_field :glass_id %>
+  </div>
+  <%if false%>
+  <div class="field">
+    <%= f.label :store_id %><br>
+    <%= f.number_field :store_id %>
+  </div>
+  <%else%>
+  	<strong><%= f.label "Select The Branch please" %><br> </strong>
+<%= f.select :store_id, @stores.collect {|p| [ p.title, p.id ] }, :selected => params[:store_id], :include_blank=> 'None' %>
+  <%end%>
+  <%if false%>
+  <div class="field">
+    <%= f.label :quantity %><br>
+    <%= f.number_field :quantity, :placeholder=> @glass.remain_in_store %>
+  </div>
+  <%end%>
+  <p>
+  <strong>Frame kind:</strong>
+  <%= @glass.frame_kind %>
+</p>
+
+<p>
+  <strong>Made in:</strong>
+  <%= @glass.made_in %>
+</p>
+<p>
+	<strong>Model Color</strong>
+	<%= @glass.available_color%>
+</p>
+
+<p>
+  <strong>Hole Quantity in Store:</strong>
+  <%= @glass.quantity %>
+</p>
+<p>
+	<table>
+		<thead>
+			<tr>
+				<th>Already In Store Now</th>
+				<th>Required to Move to selected Shop</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><%= @glass.remain_in_store %></td>
+				<td><%= f.text_field :quantity%></td>
+			</tr>
+		</tbody>
+  </table>
+</p>
+<p>
+  <strong>Remain in The Store:</strong>
+  <%= @glass.remain_in_store %>
+</p>
+
+<p>
+  <strong>Unity price:</strong>
+  <%= number_to_currency(@glass.unity_price) %>
+</p>
+
+<p>
+  <strong>Discount rate:</strong>
+  <%= @glass.discount_rate %>
+</p>
+
+<p>
+  <strong>Glass Kind:</strong>
+  <%= @glass.glass_kind %>
+</p>
+
+<p>
+  <strong>Discount rate 2:</strong>
+  <%= @glass.discount_rate_2 %>
+</p>
+
+<p>
+	<strong>Already Sold</strong>
+	<%= @glass.sold%>
+</p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', glass_store_links_path %>

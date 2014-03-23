@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140208115703) do
+ActiveRecord::Schema.define(version: 20140221114946) do
 
   create_table "customers", force: true do |t|
     t.string   "name"
@@ -38,6 +38,30 @@ ActiveRecord::Schema.define(version: 20140208115703) do
     t.datetime "updated_at"
   end
 
+  create_table "empolyees", force: true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "mobile"
+    t.string   "address"
+    t.string   "national_id"
+    t.string   "mobile_2"
+    t.date     "birthday"
+    t.integer  "age"
+    t.string   "role"
+    t.decimal  "salary"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "glass_store_links", force: true do |t|
+    t.integer  "glass_id"
+    t.integer  "store_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "glasses", force: true do |t|
     t.string   "frame_kind"
     t.string   "made_in"
@@ -47,6 +71,19 @@ ActiveRecord::Schema.define(version: 20140208115703) do
     t.string   "glass_kind"
     t.decimal  "discount_rate_2"
     t.integer  "model"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "available_color"
+    t.integer  "remain_in_store"
+    t.integer  "sold"
+    t.string   "frame_material"
+  end
+
+  create_table "stores", force: true do |t|
+    t.string   "title"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "mobile"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

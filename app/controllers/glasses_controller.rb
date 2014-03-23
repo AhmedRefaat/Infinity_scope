@@ -1,10 +1,20 @@
 class GlassesController < ApplicationController
-  before_action :set_glass, only: [:show, :edit, :update, :destroy]
+  before_action :set_glass, only: [:show, :edit, :update, :destroy, :addtoshop1]
 
   # GET /glasses
   # GET /glasses.json
   def index
     @glasses = Glass.all
+    #@stores = Store.all(:select => :title)
+    @stores = Store.all
+  end
+  
+  #GET /glasses/1/addtoshop
+  def addtoshop1
+    @stores = Store.all
+    @glass = Glass.find(params[:id])
+   # @glass_store_link = Glass_store_link.new
+    
   end
 
   # GET /glasses/1
@@ -25,6 +35,9 @@ class GlassesController < ApplicationController
   # POST /glasses.json
   def create
     @glass = Glass.new(glass_params)
+    if(@glass.remain_in_store=="")
+      @glass.remain_in_store = @glass.quantity
+    end
 
     respond_to do |format|
       if @glass.save
@@ -40,6 +53,10 @@ class GlassesController < ApplicationController
   # PATCH/PUT /glasses/1
   # PATCH/PUT /glasses/1.json
   def update
+    @glass = glass_params
+    if(params[:remain_in_store]== "")
+      params[:remain_in_store] = params[:quantity]
+    end
     respond_to do |format|
       if @glass.update(glass_params)
         format.html { redirect_to @glass, notice: 'Glass was successfully updated.' }
@@ -69,7 +86,7 @@ class GlassesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def glass_params
-      params.require(:glass).permit(:frame_kind, :made_in, :quantity, :unity_price, :discount_rate, :glass_kind, :discount_rate_2, :model)
+      params.require(:glass).permit(:frame_kind, :made_in, :quantity, :remain_in_store, :unity_price, :discount_rate, :glass_kind, :discount_rate_2, :model, :available_color, :sold, :frame_material)
     end
     def country
     [

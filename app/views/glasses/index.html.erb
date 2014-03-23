@@ -3,13 +3,17 @@
 <table>
   <thead>
     <tr>
-      <th>Frame kind</th>
+      <th>Frame Kind</th>
+      <th>Frame Material</th>
       <th>Made in</th>
+      <th>Model Color</th>
       <th>Quantity</th>
+      <th>Remain In Store</th>
       <th>Unity price</th>
       <th>Discount rate</th>
       <th>Glass Kind</th>
       <th>Discount rate 2</th>
+      <th>Already Sold</th>
       <th></th>
       <th></th>
       <th></th>
@@ -20,15 +24,24 @@
     <% @glasses.each do |glass| %>
       <tr>
         <td><%= glass.frame_kind %></td>
+        <td><%= glass.frame_material %></td>
         <td><%= glass.made_in %></td>
+        <td><%= glass.available_color %></td>
         <td><%= glass.quantity %></td>
-        <td><%= glass.unity_price %></td>
+        <td><%= glass.remain_in_store %></td>
+        <td><%= number_to_currency(glass.unity_price) %></td>
         <td><%= glass.discount_rate %></td>
         <td><%= glass.glass_kind %></td>
         <td><%= glass.discount_rate_2 %></td>
+        <td><%= glass.sold%></td>
         <td><%= link_to 'Show', glass %></td>
         <td><%= link_to 'Edit', edit_glass_path(glass) %></td>
         <td><%= link_to 'Destroy', glass, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%if false%>
+        <td><%= link_to 'Add to shop', :controller=>"glasses", :action=>"addtoshop1" , :id=> glass.id%></td>
+        <%else%>
+        <td><%= link_to "Add some to shop", :controller => 'glass_store_links', :action => 'new2', :glass_id => glass.id%></td>
+        <%end%>
       </tr>
     <% end %>
   </tbody>

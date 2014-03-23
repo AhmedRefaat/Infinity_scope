@@ -1,7 +1,21 @@
 InfinityScope::Application.routes.draw do
+  #map.connect "/glass_store_links/addtoshop", :controller=> 'glass_store_link', :actions => 'addtoshop'
+  get "/glass_store_links/addtoshop" => "glass_store_links#addtoshop", :as => 'addtoshop'
+#  get 'glasses/:addtoshop/:id'
+get "/glasses/addtoshop1/:id" => "glasses#addtoshop1", :as => 'glasses/addtoshop1'
+get "/glass_store_links/new2/:glass_id" => 'glass_store_links#new2', :as => 'glass_store_links/new2'
+post "/glass_store_links/create/:glass_id/:store_id/:quantity" => "glass_store_links#create", :as => 'glass_store_links/create'
+  resources :empolyees
+
+  resources :stores
+
+  resources :glass_store_links
+
   resources :glasses
+  #, :collection =>{:addtoshop1 => :get}
 
   resources :customers
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

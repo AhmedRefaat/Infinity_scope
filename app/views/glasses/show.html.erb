@@ -6,13 +6,25 @@
 </p>
 
 <p>
-  <strong>Made in:</strong>
-  <%= @glass.made_in %>
+  <strong>Frame Material:</strong>
+  <%= @glass.frame_material %>
 </p>
 
 <p>
+  <strong>Made in:</strong>
+  <%= @glass.made_in %>
+</p>
+<p>
+	<strong>Model Color</strong>
+	<%= @glass.available_color%>
+</p>
+<p>
   <strong>Quantity:</strong>
   <%= @glass.quantity %>
+</p>
+<p>
+  <strong>Remain in The Store:</strong>
+  <%= @glass.remain_in_store %>
 </p>
 
 <p>
@@ -33,6 +45,11 @@
 <p>
   <strong>Discount rate 2:</strong>
   <%= @glass.discount_rate_2 %>
+</p>
+
+<p>
+	<strong>Already Sold</strong>
+	<%= @glass.sold%>
 </p>
 
 <%= link_to 'Edit', edit_glass_path(@glass) %> |

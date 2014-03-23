@@ -1,6 +1,135 @@
 <h1>Editing customer</h1>
 
-<%= render 'form' %>
+<%= form_for (@customer) do |f| %>
+
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_date %><br>
+    <%= f.datetime_select :delivery_date %>
+  </div>
+  <div class="field">
+    <%= f.label :work %><br>
+    <%= f.text_field :work %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile %><br>
+    <%= f.text_field :mobile %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :request_date %><br>
+    <%= f.datetime_select :request_date %>
+  </div>
+  <div class="field">
+    <%= f.label :cash %><br>
+    <%= f.text_field :cash %>
+  </div>
+  <div class="field">
+    <%= f.label :paid %><br>
+    <%= f.text_field :paid %>
+  </div>
+  <div class="field">
+    <%= f.label :remained %><br>
+    <%= f.text_field :remained %>
+  </div>
+  <table>
+  	<thead>
+  		<tr>
+  			<th>Left Eye</th>
+  			<th>Right Eye</th>
+  		
+  		<tr>
+  			<th>Left Sperical</th>
+  			<th>Left Circual</th>
+  			<th>Left Axis</th>
+  			
+  			<th>Right Sperical</th>
+  			<th>Right Circual</th>
+  			<th>Right Axis</th>
+  		</tr>
+  		</tr>
+  	</thead>
+  </table>
+  <div class="field">
+    <%= f.label :lft_sp %><br>
+    <%= f.text_field :lft_sp %>
+  </div>
+  <div class="field">
+    <%= f.label :lft_cl %><br>
+    <%= f.text_field :lft_cl %>
+  </div>
+  <div class="field">
+    <%= f.label :lft_ax %><br>
+    <%= f.text_field :lft_ax %>
+  </div>
+  <div class="field">
+    <%= f.label :rght_sp %><br>
+    <%= f.text_field :rght_sp %>
+  </div>
+  <div class="field">
+    <%= f.label :rght_cl %><br>
+    <%= f.text_field :rght_cl %>
+  </div>
+  <div class="field">
+    <%= f.label :rght_ax %><br>
+    <%= f.text_field :rght_ax %>
+  </div>
+  <div class="field">
+    <%= f.label :doctor %><br>
+    <%= f.text_field :doctor %>
+  </div>
+  <div class="field">
+    <%= f.label :req_store %><br>
+    <%if false%>
+    <%= f.text_field :req_store %>
+    <%else%>
+    <%= f.select :req_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => @customer.req_store, :include_blank=> 'None' %>
+    <%end%>
+  </div>
+  <div class="field">
+    <%= f.label :deliv_store %><br>
+    <%if false%>
+    <%= f.text_field :deliv_store %>
+    <%else%>
+    <%= f.select :deliv_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => @customer.deliv_store, :include_blank=> 'None' %>
+    <%end%>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
+  <div>
+  
+  	
+	<%= select_tag 'glass_id', options_for_select(@strings), :include_blank=> true%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
 
 <%= link_to 'Show', @customer %> |
 <%= link_to 'Back', customers_path %>
