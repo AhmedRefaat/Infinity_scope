@@ -125,9 +125,11 @@
   </div>
   <div>
   
-  	
-	<%= select_tag 'glass_id', options_for_select(@strings), :include_blank=> true%>
-  </div>
+  	<% #f.select :req_store, @stores.collect {|p| [ p.title, p.id ] }, :selected => @customer.req_store, :include_blank=> 'None' %>
+  	<%#= select_tag :req_glass, options_for_select(@strings), :include_blank=> true%>
+	<%#= select_tag :glass_id, @glasses.collect {|p| [p.frame_kind.to_str, p.id]}, :include_blank=> true%>
+  </div> 
+ 
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -31,6 +31,31 @@ class GlassesController < ApplicationController
   def edit
   end
 
+
+  # PATCH/PUT /glasses/1
+  # PATCH/PUT /glasses/1.json
+  def update
+    @glass = glass_params
+    #if (@glass.remain_in_store == "")
+     # @glass.remain_in_store = @glass.quantity
+    #end
+    #params[:remain_in_store] = params[:quantity]
+    respond_to do |format|
+      #if @glass.update(glass_params)
+      if @glass.update(@glass)
+        #if(@glass.remain_in_store = "")
+          
+        format.html { redirect_to @glass, notice: 'Glass was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @glass.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
+
   # POST /glasses
   # POST /glasses.json
   def create
@@ -50,23 +75,6 @@ class GlassesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /glasses/1
-  # PATCH/PUT /glasses/1.json
-  def update
-    @glass = glass_params
-    if(params[:remain_in_store]== "")
-      params[:remain_in_store] = params[:quantity]
-    end
-    respond_to do |format|
-      if @glass.update(glass_params)
-        format.html { redirect_to @glass, notice: 'Glass was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @glass.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   # DELETE /glasses/1
   # DELETE /glasses/1.json

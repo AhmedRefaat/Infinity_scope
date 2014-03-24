@@ -30,7 +30,11 @@
     <%if false%>
     <%= f.text_field :made_in %>
     <%end%>
-    <%= f.select :made_in, options_for_select(%w[Turkey Koera China Italy Japan France German])%>
+    <%= f.select :made_in, options_for_select(%w[Turkey Koera China Italy Japan France German]), :selected => @glass.made_in%>
+  </div>
+    <div class="field">
+    <%= f.label :available_color %><br>
+    <%= f.text_field :available_color%>
   </div>
   <div class="field">
     <%= f.label :quantity %><br>

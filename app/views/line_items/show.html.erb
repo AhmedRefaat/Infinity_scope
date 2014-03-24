@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Glass:</strong>
+  <%= @line_item.glass_id %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @line_item.customer_id %>
+</p>
+
+<p>
+  <strong>Integer:</strong>
+  <%= @line_item.integer %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @line_item.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

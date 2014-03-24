@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  glass_id: 1
+  customer_id: MyString
+  integer: MyString
+  quantity: 1
+
+two:
+  glass_id: 1
+  customer_id: MyString
+  integer: MyString
+  quantity: 1

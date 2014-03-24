@@ -1,4 +1,6 @@
 InfinityScope::Application.routes.draw do
+  resources :line_items
+
   get "page/home"
   get "page/about"
   get "page/contact"
@@ -8,6 +10,7 @@ InfinityScope::Application.routes.draw do
 get "/glasses/addtoshop1/:id" => "glasses#addtoshop1", :as => 'glasses/addtoshop1'
 get "/glass_store_links/new2/:glass_id" => 'glass_store_links#new2', :as => 'glass_store_links/new2'
 post "/glass_store_links/create/:glass_id/:store_id/:quantity" => "glass_store_links#create", :as => 'glass_store_links/create'
+get "/customers/select_glass" => "customers#select_glass", :as=> 'customers/select_glass'
   resources :empolyees
 
   resources :stores

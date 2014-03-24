@@ -1,13 +1,17 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   @@current_glasses = Glass.all
+  @@glasses_hash = {}
+  @@current_customer = 1
   
 def glass_to_String
       @req_string = []
-      @all_glasses = Glass.all
-      Glass.all.each do |glass|
-        @req_string += [glass.frame_kind + ' - '+ glass.frame_material.to_s+' - '+ glass.made_in.to_s + ' - ' + glass.available_color.to_s + ' - ' + glass.model.to_s]
-      end 
+      for glass in Glass.all
+        if glass.quantity > 0
+          @@glasses_hash[glass.id] = glass.frame_kind.to_s + ' - '+ glass.frame_material.to_s+' - '+ glass.made_in.to_s + ' - ' + glass.available_color.to_s + ' - ' + glass.model.to_s
+          @req_string += [(glass.frame_kind.to_s + ' - '+ glass.frame_material.to_s+' - '+ glass.made_in.to_s + ' - ' + glass.available_color.to_s + ' - ' + glass.model.to_s )] 
+        end
+      end
       return @req_string
     end
     private
@@ -37,9 +41,11 @@ def glass_to_String
   # GET /customers/new
   def new
     @customer = Customer.new
+    @@current_customer = @customer.id
     @glasses = Glass.all
     @stores = Store.all
     @strings = glass_to_String()
+    
   end
 
   # GET /customers/1/edit
@@ -48,6 +54,7 @@ def glass_to_String
     @stores = Store.all
     @strings = glass_to_String()
     @customer = Customer.find(params[:id])
+    @@current_customer = @customer.id
         #set remained in case not added by user 
     #set remained in case not added by user 
     if (@customer.remained == "")
@@ -65,6 +72,7 @@ def glass_to_String
 
     respond_to do |format|
       if @customer.update(customer_params)
+        @@current_customer = @customer.id
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,19 +93,27 @@ def glass_to_String
        @customer.remained = @customer.cash - @customer.paid
     end   # end of checking user remained amount of money
     
+    #checking which store that customer asked to take the glass from
     if(@customer.deliv_store = "")
       @customer.deliv_store = @customer.req_store
-    
+    end
 
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
+        @@current_customer = @customer.id
+        format.html { redirect_to customers_select_glass_path, notice: 'Customer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @customer }
       else
         format.html { render action: 'new' }
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  
+  def select_glass  
+    @glasses = Glass.all
+    @customer = Customer.find(@@current_customer)
   end
   
   
@@ -124,5 +140,4 @@ def glass_to_String
     #end
     
 
-end
 end
