@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+<h1>Search For Customer</h1>
+
+
+
+<% form_tag customers_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+     <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
+<%= link_to 'Home Page', page_home_path %>

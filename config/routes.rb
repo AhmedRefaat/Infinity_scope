@@ -11,6 +11,9 @@ get "/glasses/addtoshop1/:id" => "glasses#addtoshop1", :as => 'glasses/addtoshop
 get "/glass_store_links/new2/:glass_id" => 'glass_store_links#new2', :as => 'glass_store_links/new2'
 post "/glass_store_links/create/:glass_id/:store_id/:quantity" => "glass_store_links#create", :as => 'glass_store_links/create'
 get "/customers/select_glass" => "customers#select_glass", :as=> 'customers/select_glass'
+post "/customers/select_glass_to_old_customer" => "customers#select_glass_to_old_customer", :as=> 'customers/select_glass_to_old_customer'
+get "/customers/find_customer" => "customers#find_customer", :as=> 'customers/find_customer'
+get '/customers/found_customers' => "customers#found_customers", :as => 'customers/found_customers'
   resources :empolyees
 
   resources :stores

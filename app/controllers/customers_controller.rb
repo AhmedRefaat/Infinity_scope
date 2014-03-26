@@ -1,8 +1,12 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  
+  #static variable declaration : 
   @@current_glasses = Glass.all
   @@glasses_hash = {}
   @@current_customer = 1
+  @@req_customers = []
+  #end of static variables declarations
   
 def glass_to_String
       @req_string = []
@@ -29,7 +33,7 @@ def glass_to_String
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    @customers = Customer.search(params[:search])
   end
 
   # GET /customers/1
@@ -113,10 +117,39 @@ def glass_to_String
   
   def select_glass  
     @glasses = Glass.all
-    @customer = Customer.find(@@current_customer)
+    if params[:customer_id]
+      @customer = Customer.find(params[:customer_id])
+    else
+      @customer = Customer.find(@@current_customer)
+    end
+    #@customer = Customer.find(@@current_customer)
   end
   
+  def select_glass_to_old_customer
+    @glasses = Glass.all
+    @customer = Customer.find(params[:customer_id])
+    #@customer = @@req_customers
+  end
   
+  def find_customer #unused action now 
+    @customer= []
+    if (params[:name_option] == true)
+      name_keyward = "%"+params[:req_name]+"%"
+      @customer += Customer.find(:all, :conditions => ['name LIKE ?', name_keyward])
+    elsif (params[:mobile_option] == true)
+      mobile_keyword = "%"+ params[:req_mobile] + "%"
+      @customer += Customer.find(:all, :conditions => ['mobile LIKE ?', mobile_keyward])
+    end
+    show_notice = @customer.length.to_s + " were found"
+    @@req_customers = @customer
+  #  respond_to do |format|
+     # format.html {redirect_to customers_select_glass_to_old_customer_path, notice: show_notice}
+    #end 
+  end
+  
+  def found_customers
+    @customers = Customer.search(params[:search])
+  end
 
 
   # DELETE /customers/1
