@@ -162,7 +162,25 @@ def glass_to_String
     end
   end
   
-  
+  def today_sales
+    @customers  = Customer.find(:all, :conditions => ["STRFTIME('%d', request_date) =  ? AND STRFTIME ('%m', request_date) = ?", Date.today.day, Date.today.month])
+    
+    if @customers.count != 0  
+      @reserved_glasses = []
+      for customer in @customers
+        glass_id = LineItem.find(:all, :conditions => ["STRFTIME('%d', created_at) =  ? AND STRFTIME ('%m', created_at) = ? AND customer_id = ?", Date.today.day, Date.today.month, customer.id])
+        @reserved_glasses += Glass.find(glass_id)
+      end
+    else
+      flash[:notice] = 'There is no Sales today'
+      redirect_to page_home_path 
+    end
+    
+    puts "#######################################################################################"
+    puts @customers
+    puts @customers.count
+    puts "#######################################################################################"
+  end
     
   #private
     # Use callbacks to share common setup or constraints between actions.

@@ -14,6 +14,7 @@ get "/customers/select_glass" => "customers#select_glass", :as=> 'customers/sele
 post "/customers/select_glass_to_old_customer" => "customers#select_glass_to_old_customer", :as=> 'customers/select_glass_to_old_customer'
 get "/customers/find_customer" => "customers#find_customer", :as=> 'customers/find_customer'
 get '/customers/found_customers' => "customers#found_customers", :as => 'customers/found_customers'
+get '/customers/today_sales' => "customers#today_sales", :as => 'customers/today_sales'
   resources :empolyees
 
   resources :stores
